@@ -26,7 +26,7 @@ function checksExistsUserAccount(request, response, next) {
 function checksCreateTodosUserAvailability(request, response, next) {
   const { user } = request;
 
-  if (!user.pro && user.todos.length > 10) {
+  if (!user.pro && user.todos.length > 9) {
     return response.status(403).json({ error: 'User cannot create a new todo!' });
   }
 
@@ -47,7 +47,7 @@ function checksTodoExists(request, response, next) {
     return response.status(400).json({ error: 'Invalid ID!' });
   }
 
-  const todo = users.todos.find(todo => { todo.id === id });
+  const todo = user.todos.find(todo => todo.id === id );
 
   console.log(todo);
 
